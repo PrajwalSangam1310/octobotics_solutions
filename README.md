@@ -1,8 +1,13 @@
 # octobotics assignment
-Inverted Pendulum solution scripts.
-  - goal1_solution.py for goal 1
-  - goal2_solution.py for goal 2
-  - goal3_solution.py for goal 3
+
+## Videos
+  - Goal1
+    - In the goal1 video file, the script is played which makes the cart_mass, pendulum_mass and the initial x and theta to required values.
+  - Goal2
+    - The freq and amplitude values are changed and the effects are reflected in graphs.
+    - For this rqt_gui plot plugin is used, in that, the gui based on matplotlib is used.
+  - Goal3
+    - The video shows the working of lqr controller with different initial x values.     
 
 ## Tools Used
 
@@ -17,8 +22,14 @@ Inverted Pendulum solution scripts.
 
 ## Ros
 
+- Ros noetic is used
 - Three scripts were created each one for each goal.
 - Each scripts solves only for that particular goal.
+
+## Inverted Pendulum solution scripts.
+  - goal1_solution.py for goal 1
+  - goal2_solution.py for goal 2
+  - goal3_solution.py for goal 3
 
 ### Goal 1
 
@@ -34,8 +45,9 @@ Inverted Pendulum solution scripts.
 
 ### Goal 3
 
+- Note: The lqr is designed for cart_mass = 10, pendulum_mass = 10, length = 200, I = 0, b = 0 (as per present in the /src/inverted_pendulum_sim_node.py).
 - Script implements the state space controller.
-- The k matrix genrated using the matlab is used in here.
+- The k matrix genrated using the matlab.
 - The process is simple
   - The subscriber function to the curr_state updates the curr_state in the lqr_controller class.
   - The get_force function gives the force required by taking the dot product of the current state and k_matrix.
@@ -47,3 +59,12 @@ Inverted Pendulum solution scripts.
   - this made the domain of theta as -pi to pi
   - this psi was used in later force calculation.
 - The calculated force is published on the required topic.    
+
+## Usage
+
+- Place the inverted_pendulum_sim package in the workspace.
+- build the package.
+- use 
+  - `roslaunch inverted_pendulum_sim inverted_pendulum_sim.launch`
+- and then
+  - `rosrun inverted_pendulum_sim goal3_solution.py`
